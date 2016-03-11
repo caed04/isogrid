@@ -18,10 +18,8 @@ If you do not already use jQuery in your project you will need to install as Iso
 * [Paparagilles](http://paparagilles.artv.ca/le-bazar-culturel/)
 
 
-Installation
-=====
+## Installation
 ---
-___
 
 ###Bower
 In the `bower.json` file add the line below as a `dependencies`:
