@@ -45,6 +45,7 @@ In the `bower.json` file add the line below as a `dependencies`:
 ```
 
 ## Exemple
+---
 
 ```html
 <script type="text/javascript">
