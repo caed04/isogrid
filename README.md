@@ -6,13 +6,12 @@
 * Manage dynamic isotope content via webservices.
 * last version : 2.0.0
 
-## Usage
+**Usage**
 As you can see in the example files, you will need to include:
  - [jQuery library](http://jquery.com/). (2.2.1 minimum)
 
 
-### Install using bower or npm
-**Optionally**, you can install Isogrid.js with bower if you prefer:
+## Installation using bower
 
 In the `bower.json` file. add the line below as a `dependencies`:
 ```shell
