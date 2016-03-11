@@ -41,16 +41,13 @@ In the `bower.json` file add the line below as a `dependencies`:
 ```html
 <script type="text/javascript">
         jQuery(document).ready(function($) {
-
-            // ----------------------------------------------------------------
-            // Isogrid - projects
-            // ----------------------------------------------------------------
             var projects = new Isogrid({
                 paginationLimit:(isMobile.phone) ? 3 : 10,
                 ws_getItems: "{{ url('ws_more_projects') }}"
             });
-            projects.getIsoItems().then(function(){
 
+            projects.getIsoItems().then(function(){
+                // callback funtion if needed
             });
 
 
