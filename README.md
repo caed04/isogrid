@@ -11,7 +11,7 @@ If you do not already use jQuery in your project you will need to install as Iso
  - [jQuery library](http://jquery.com/). (2.2.1 minimum)
 
 
-## Exemple
+## Exemples
 * [C'est juste de le TV](http://cestjustedelatv.artv.ca/)
 * [Lire](http://lire.artv.ca/)
 * [Belle et Bum](http://belleetbum.telequebec.tv/listes-decoute/)
