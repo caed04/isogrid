@@ -47,7 +47,7 @@ In the `bower.json` file add the line below as a `dependencies`:
             });
 
             projects.getIsoItems().then(function(){
-                // callback funtion if needed
+                // callback function if needed
             });
 
 
