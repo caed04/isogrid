@@ -1,0 +1,31 @@
+{
+    "name": "Isogrid",
+    "description": "An Isotope automator controller",
+    "main": [
+        "dist/Isogrid.min.js",
+        "dist/Isogrid.min.css"
+    ],
+    "homepage": "",
+    "authors": [
+        "David Lagacé"
+    ],
+    "license": "Version10",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "examples",
+        "assets",
+        "demo",
+        "docs"
+    ],
+    "dependencies": {
+        "jquery": "2.2.1",
+        "isotope": "2.2.2",
+        "imagesloaded": "4.1.0"
+    },
+    "devDependencies": {
+        "bootstrap": "~3.3.5"
+    }
+}
