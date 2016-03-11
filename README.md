@@ -40,23 +40,23 @@ In the `bower.json` file add the line below as a `dependencies`:
 
 ```html
 <script type="text/javascript">
-        jQuery(document).ready(function($) {
-            var projects = new Isogrid({
-                paginationLimit:(isMobile.phone) ? 3 : 10,
-                ws_getItems: "{{ url('ws_more_projects') }}"
-            });
-
-            projects.getIsoItems().then(function(){
-                // callback function if needed
-            });
-
-
-            // Options functions
-            $('[data-isogrid-load-more]').on('click', showMoreTiles);
-            function showMoreTiles (e) {
-                e.preventDefault();
-                projects.getIsoItems();
-            }
+    jQuery(document).ready(function($) {
+        var projects = new Isogrid({
+            paginationLimit:(isMobile.phone) ? 3 : 10,
+            ws_getItems: "{{ url('ws_more_projects') }}"
         });
-    </script>
+ 
+       projects.getIsoItems().then(function(){
+            // callback function if needed
+        });
+
+
+        // Options functions
+        $('[data-isogrid-load-more]').on('click', showMoreTiles);
+        function showMoreTiles (e) {
+            e.preventDefault();
+            projects.getIsoItems();
+        }
+    });
+</script>
 ```
