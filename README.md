@@ -24,7 +24,7 @@ If you do not already use jQuery in your project you will need to install as Iso
 ###Bower
 In the `bower.json` file add the line below as a `dependencies`:
 ```shell
-"v10-isogrid": "https://CFvAfVwp8LKIXemMEGfADquDCgStFSBV@bitbucket.org/version10/v10-isogrid.git",
+"v10-isogrid": "https://bitbucket.org/version10/v10-isogrid.git",
 
 ```
 
