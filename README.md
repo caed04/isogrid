@@ -46,7 +46,7 @@ In the `bower.json` file add the line below as a `dependencies`:
             ws_getItems: "{{ url('ws_more_projects') }}"
         });
  
-       projects.getIsoItems().then(function(){
+        projects.getIsoItems().then(function(){
             // callback function if needed
         });
 
