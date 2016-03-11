@@ -14,10 +14,9 @@ As you can see in the example files, you will need to include:
 ### Install using bower or npm
 **Optionally**, you can install Isogrid.js with bower if you prefer:
 
-Terminal:
+In the `bower.json` file. add the line below as a `dependencies`:
 ```shell
-// With bower
-bower install fullpage.js
+"v10-isogrid": "https://CFvAfVwp8LKIXemMEGfADquDCgStFSBV@bitbucket.org/version10/v10-isogrid.git",
 
 ```
 
