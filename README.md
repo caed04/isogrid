@@ -8,8 +8,8 @@
 
 ## Usage
 As you can see in the example files, you will need to include:
- - [jQuery library](http://jquery.com/). (1.6.0 minimum)
- - The JavaScript file `Isogrid.min.js`
+ - [jQuery library](http://jquery.com/). (2.2.1 minimum)
+
 
 ### Install using bower or npm
 **Optionally**, you can install Isogrid.js with bower if you prefer:
