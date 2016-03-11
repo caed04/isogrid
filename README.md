@@ -35,7 +35,7 @@ In the `bower.json` file add the line below as a `dependencies`:
 <script src="bower_components/v10-isogrid/dist/Isogrid.min.js"></script>
 ```
 
-###Adding tags:
+###Adding tags in HTML:
 ```html
    <!-- This is where the isotope items are gonna be loaded -->
    <div data-isogrid-containeur></div>
