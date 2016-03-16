@@ -1,4 +1,4 @@
-# Isogrid #
+# Isogrid.js #
 
 
 ### The Isotope Manager you need! ###
