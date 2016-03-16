@@ -32,7 +32,7 @@ bower install isogrid.js
 ```html
 <script src="bower_components/isotope/dist/isotope.pkgd.min.js"></script>
 <script src="bower_components/imagesloaded/imagesloaded.pkgd.min.js"></script>
-<script src="bower_components/v10-isogrid/dist/Isogrid.min.js"></script>
+<script src="bower_components/isogrid/dist/isogrid.min.js"></script>
 ```
 
 ###Adding tags in HTML:
@@ -49,9 +49,9 @@ bower install isogrid.js
 ```html
 <script type="text/javascript">
     jQuery(document).ready(function($) {
-        var projects = new Isogrid({ ws_getItems: "{{ url('ws_more_projects') }}" });
+        var iso = new Isogrid({ ws_getItems: "{{ url('ws_more_projects') }}" });
  
-        projects.getIsoItems().then(function(){
+        iso.getIsoItems().then(function(){
             // callback function if needed
         });
 
@@ -60,8 +60,19 @@ bower install isogrid.js
         $('[data-isogrid-load-more]').on('click', showMoreTiles);
         function showMoreTiles (e) {
             e.preventDefault();
-            projects.getIsoItems();
+            iso.getIsoItems();
         }
     });
 </script>
+```
+
+## Bootstrap utils
+If you are using Bootstrap you can add the following to have a perfect layout.
+```html
+[data-isogrid-containeur] {
+     .opacity(0);
+     .list-unstyled;
+     .make-row();
+     overflow: hidden;
+ }
 ```
