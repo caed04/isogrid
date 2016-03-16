@@ -7,6 +7,7 @@
 (function (window) {
     "use strict";
 
+
     var $ = jQuery;
 
     Isogrid.prototype.grid = {};
@@ -19,9 +20,7 @@
     Isogrid.prototype.paginationLimit = 10;
 
     Isogrid.prototype.isNewSearch = false;
-
     Isogrid.prototype.ajaxRequest = null;
-
     Isogrid.prototype.searchDatas = {};
 
     Isogrid.prototype.ws_getItems = window.SITE_URL + '/webservices/v1/get-items';

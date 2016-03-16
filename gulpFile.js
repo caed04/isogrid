@@ -10,10 +10,10 @@ var gulp = require('gulp'),
     nano = require('gulp-cssnano');
 
 
-var SCRIPTS_TO_COMPILE = ["Isogrid"];
+var SCRIPTS_TO_COMPILE = ["isogrid"];
 var siteTasks = ['less', 'watch'];
 
-var url = 'local.version10.ca/v10-isogrid/';
+var url = 'local.version10.ca/isogrid/';
 var basePath = '';
 
 
