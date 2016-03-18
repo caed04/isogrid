@@ -6,7 +6,7 @@
  */
 (function (window) {
     "use strict";
-    
+
     var $ = jQuery;
 
     Isogrid.prototype.grid = {};
@@ -93,7 +93,7 @@
             data: this.searchDatas
         }).done(function(response){
             if (_this.isNewSearch) {
-                var contentHtml = (response.html != "") ? response.html : '<div class="isotope-item col-lg-4 col-sm-6 col-xs-12"><article class="p20"><h4>Aucun resultat n\'a ete trouve©.</h4></article></div>';
+                var contentHtml = (response.html != "") ? response.html : '<div class="isotope-item col-lg-4 col-sm-6 col-xs-12">No result found</div>';
 
                 $('body').animate({ scrollTop: $(_this.isoConteneur).offset().top - 190 }, 500, function() {
                     $(_this.isoConteneur).isotope('insert', $(contentHtml));
