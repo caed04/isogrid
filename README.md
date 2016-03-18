@@ -4,7 +4,7 @@
 ### The Isotope Manager you need! ###
 
 * Manage dynamic isotope content via webservices.
-* last version : 2.0.0
+* last version : 2.0.2
 
 **Note**
 If you do not already use jQuery in your project you will need to install as Isogrid need it to work preperly.
