@@ -12,7 +12,6 @@ If you do not already use jQuery in your project you will need to install as Iso
 
 
 ## Installation
----
 
 ###Bower
 Install using this line:
