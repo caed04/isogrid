@@ -1,8 +1,8 @@
 /*!
- * Isogrid v2.0.0
+ * Isogrid v2.0.2
  *
- * Licensed Version10 for open source use
- * Copyright 2016 Version10
+ * Licensed Version 10 for open source use
+ * Copyright 2016 Version 10
  */
 (function (window) {
     "use strict";
@@ -11,16 +11,19 @@
 
     Isogrid.prototype.grid = {};
 
-    Isogrid.prototype.isoConteneur = '[data-isogrid-container]';
+    Isogrid.prototype.isoConteneur = '[data-isogrid-containeur]';
     Isogrid.prototype.isoLoadMoreBtn = '[data-isogrid-load-more]';
     Isogrid.prototype.isoItemSelector = '.isotope-item';
 
     Isogrid.prototype.paginationOffset = 0;
     Isogrid.prototype.paginationLimit = 10;
 
-    Isogrid.prototype.isNewSearch = false;
+    Isogrid.prototype.isNewSearch = true;
     Isogrid.prototype.ajaxRequest = null;
     Isogrid.prototype.searchDatas = {};
+
+    Isogrid.prototype.isoAddMethod = 'insert';
+    Isogrid.prototype.defaultIsoItemTemplate = '<div class="isotope-item col-lg-4 col-sm-6 col-xs-12">No result found</div>';
 
     Isogrid.prototype.ws_getItems = window.SITE_URL + '/webservices/v1/get-items';
 
@@ -55,16 +58,19 @@
     };
 
     Isogrid.prototype.relayout = function() {
-        $(this.isoConteneur).isotope('layout');
+        this.grid.isotope('layout');
     };
 
-    Isogrid.prototype.loaderImgInit = function () {
-        var _this = this;
-
-        this.grid.imagesLoaded().progress(function(instance, image) {
+    Isogrid.prototype.initImgLazyLoad = function () {
+        this.grid.imagesLoaded().progress((instance, image) => {
             $(image.img).parents('[data-bg-loaded-container]').addClass('bg-loaded');
-            _this.grid.isotope('layout');
-        });
+        this.relayout();
+    });
+    };
+
+    Isogrid.prototype.addItems = function (contentHtml = this.defaultIsoItemTemplate) {
+        this.grid.isotope(this.isoAddMethod, $(contentHtml));
+        this.initImgLazyLoad();
     };
 
     /**
@@ -72,45 +78,34 @@
      * @return {json} Generated content by filter
      */
     Isogrid.prototype.getIsoItems = function() {
-        var _this = this;
-
         $(this.isoLoadMoreBtn).hide();
 
         if (this.isNewSearch) {
             this.paginationOffset = 0;
+
             $(this.isoLoadMoreBtn).hide();
-            $(this.isoConteneur).isotope('remove', $(this.isoItemSelector+':not(.stamp)'));
+            this.grid.isotope('remove', $( `${this.isoItemSelector}:not(.stamp)` ));
+
+            $('body').animate({ scrollTop: $(this.isoConteneur).offset().top - 190 }, 500);
         }
 
-        if (this.ajaxRequest != null) { this.ajaxRequest.abort(); };
+        if (this.ajaxRequest != null) { this.ajaxRequest.abort(); }
 
         this.searchDatas.limit = this.paginationLimit;
         this.searchDatas.offset = this.paginationOffset;
 
         return this.ajaxRequest = $.ajax({
-            url: this.ws_getItems,
-            method: "GET",
-            data: this.searchDatas
-        }).done(function(response){
-            if (_this.isNewSearch) {
-                var contentHtml = (response.html != "") ? response.html : '<div class="isotope-item col-lg-4 col-sm-6 col-xs-12">No result found</div>';
+                url: this.ws_getItems,
+                method: "GET",
+                data: this.searchDatas
+            }).done((response) => {
+                this.addItems(response.html);
 
-                $('body').animate({ scrollTop: $(_this.isoConteneur).offset().top - 190 }, 500, function() {
-                    $(_this.isoConteneur).isotope('insert', $(contentHtml));
-                    _this.loaderImgInit();
-                });
-            } else {
-                $(_this.isoConteneur).isotope('insert', $(response.html));
-                _this.loaderImgInit();
-            }
+        if (response.isset_more_tiles) { $(this.isoLoadMoreBtn).fadeIn(); }
 
-            if (response.isset_more_tiles) {
-                $(_this.isoLoadMoreBtn).fadeIn();
-            }
-
-            _this.paginationOffset += _this.paginationLimit;
-            _this.isNewSearch = false;
-        });
+        this.paginationOffset += this.paginationLimit;
+        this.isNewSearch = false;
+    });
     };
 
 
