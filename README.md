@@ -31,7 +31,7 @@ bower install isogrid.js
 ###Adding tags in HTML:
 ```html
    <!-- This is where the isotope items are gonna be loaded -->
-   <div data-isogrid-containeur></div>
+   <div data-isogrid-container></div>
 
    <!-- This is the button to load more items -->
    <a data-isogrid-load-more>Load more</a>
@@ -62,8 +62,7 @@ bower install isogrid.js
 ## Bootstrap utils
 If you are using Bootstrap you can add the following to have a perfect layout.
 ```html
-[data-isogrid-containeur] {
-     .opacity(0);
+[data-isogrid-container] {
      .list-unstyled;
      .make-row();
      overflow: hidden;
