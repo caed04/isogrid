@@ -1,5 +1,5 @@
 /*!
- * Isogrid v2.0.2
+ * Isogrid v2.1.0
  *
  * Licensed Version 10 for open source use
  * Copyright 2016 Version 10
@@ -64,8 +64,8 @@
     Isogrid.prototype.initImgLazyLoad = function () {
         this.grid.imagesLoaded().progress((instance, image) => {
             $(image.img).parents('[data-bg-loaded-container]').addClass('bg-loaded');
-        this.relayout();
-    });
+            this.relayout();
+        });
     };
 
     Isogrid.prototype.addItems = function (contentHtml = this.defaultIsoItemTemplate) {
@@ -95,17 +95,16 @@
         this.searchDatas.offset = this.paginationOffset;
 
         return this.ajaxRequest = $.ajax({
-                url: this.ws_getItems,
-                method: "GET",
-                data: this.searchDatas
-            }).done((response) => {
-                this.addItems(response.html);
+            url: this.ws_getItems,
+            method: "GET",
+            data: this.searchDatas
+        }).done((response) => {
+            this.addItems(response.html);
+            if (response.isset_more_tiles) { $(this.isoLoadMoreBtn).fadeIn(); }
 
-        if (response.isset_more_tiles) { $(this.isoLoadMoreBtn).fadeIn(); }
-
-        this.paginationOffset += this.paginationLimit;
-        this.isNewSearch = false;
-    });
+            this.paginationOffset += this.paginationLimit;
+            this.isNewSearch = false;
+        });
     };
 
 
