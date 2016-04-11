@@ -1,5 +1,7 @@
 # Isogrid.js #
 
+![Release](https://img.shields.io/badge/release-v2-green.svg)
+
 
 ### The Isotope Manager you need! ###
 
