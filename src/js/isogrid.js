@@ -18,6 +18,7 @@
     Isogrid.prototype.paginationOffset = 0;
     Isogrid.prototype.paginationLimit = 10;
 
+    Isogrid.prototype.isMoreTiles = true;
     Isogrid.prototype.isNewSearch = true;
     Isogrid.prototype.ajaxRequest = null;
     Isogrid.prototype.searchDatas = {};
@@ -82,6 +83,7 @@
 
         if (this.isNewSearch) {
             this.paginationOffset = 0;
+            this.isMoreTiles = true;
 
             $(this.isoLoadMoreBtn).hide();
             this.grid.isotope('remove', $( `${this.isoItemSelector}:not(.stamp)` ));
@@ -100,7 +102,9 @@
             data: this.searchDatas
         }).done((response) => {
             this.addItems(response.html);
+
             if (response.isset_more_tiles) { $(this.isoLoadMoreBtn).fadeIn(); }
+            this.isMoreTiles = response.isset_more_tiles;
 
             this.paginationOffset += this.paginationLimit;
             this.isNewSearch = false;
