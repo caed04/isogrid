@@ -11,7 +11,7 @@
 
     Isogrid.prototype.grid = {};
 
-    Isogrid.prototype.isoConteneur = '[data-isogrid-containeur]';
+    Isogrid.prototype.isoConteneur = '[data-isogrid-container]';
     Isogrid.prototype.isoLoadMoreBtn = '[data-isogrid-load-more]';
     Isogrid.prototype.isoItemSelector = '.isotope-item';
 
