@@ -1,5 +1,5 @@
 /*!
- * Isogrid v2.1.0
+ * Isogrid v2.2.0
  *
  * Licensed Version 10 for open source use
  * Copyright 2016 Version 10
@@ -10,6 +10,11 @@
     var $ = jQuery;
 
     Isogrid.prototype.grid = {};
+
+    // set language
+    Isogrid.prototype._lang = "en";
+
+    Isogrid.prototype.animationScrollTop = false;
 
     Isogrid.prototype.isoConteneur = '[data-isogrid-container]';
     Isogrid.prototype.isoLoadMoreBtn = '[data-isogrid-load-more]';
@@ -23,8 +28,12 @@
     Isogrid.prototype.ajaxRequest = null;
     Isogrid.prototype.searchDatas = {};
 
+    Isogrid.prototype.noresult = {
+        en: "<div class='isotope-item'><p>No result found</p></div>",
+        fr: "<div class='isotope-item'><p>Aucun résultat n\'a été trouvé.</p></div>"
+    };
+
     Isogrid.prototype.isoAddMethod = 'insert';
-    Isogrid.prototype.defaultIsoItemTemplate = '<div class="isotope-item col-lg-4 col-sm-6 col-xs-12">No result found</div>';
 
     Isogrid.prototype.ws_getItems = window.SITE_URL + '/webservices/v1/get-items';
 
@@ -65,11 +74,11 @@
     Isogrid.prototype.initImgLazyLoad = function () {
         this.grid.imagesLoaded().progress((instance, image) => {
             $(image.img).parents('[data-bg-loaded-container]').addClass('bg-loaded');
-            this.relayout();
-        });
+        this.relayout();
+    });
     };
 
-    Isogrid.prototype.addItems = function (contentHtml = this.defaultIsoItemTemplate) {
+    Isogrid.prototype.addItems = function (contentHtml = this.noresult[this._lang]) {
         this.grid.isotope(this.isoAddMethod, $(contentHtml));
         this.initImgLazyLoad();
     };
@@ -88,7 +97,9 @@
             $(this.isoLoadMoreBtn).hide();
             this.grid.isotope('remove', $( `${this.isoItemSelector}:not(.stamp)` ));
 
-            $('body').animate({ scrollTop: $(this.isoConteneur).offset().top - 190 }, 500);
+            if(this.animationScrollTop){
+                $('body').animate({ scrollTop: $(this.isoConteneur).offset().top - 190 }, 500);
+            }
         }
 
         if (this.ajaxRequest != null) { this.ajaxRequest.abort(); }
@@ -103,7 +114,9 @@
         }).done((response) => {
             this.addItems(response.html);
 
-            if (response.isset_more_tiles) { $(this.isoLoadMoreBtn).fadeIn(); }
+            if (response.isset_more_tiles) {
+                $(this.isoLoadMoreBtn).fadeIn();
+            }
             this.isMoreTiles = response.isset_more_tiles;
 
             this.paginationOffset += this.paginationLimit;
@@ -113,5 +126,4 @@
 
 
     window.Isogrid = Isogrid;
-}(window));
-
+})(window);
