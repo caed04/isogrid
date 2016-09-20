@@ -95,7 +95,7 @@
             this.isMoreTiles = true;
 
             $(this.isoLoadMoreBtn).hide();
-            this.grid.isotope('remove', $( `${this.isoItemSelector}:not(.stamp)` ));
+            this.grid.isotope('remove', $( `${this.isotopeParams.itemSelector}:not(.stamp)` ));
 
             if(this.animationScrollTop){
                 $('body').animate({ scrollTop: $(this.isoConteneur).offset().top - 190 }, 500);
