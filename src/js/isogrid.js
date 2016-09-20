@@ -18,9 +18,8 @@
 
     Isogrid.prototype.isoConteneur = '[data-isogrid-container]';
     Isogrid.prototype.isoLoadMoreBtn = '[data-isogrid-load-more]';
-    Isogrid.prototype.isoItemSelector = '.isotope-item';
     Isogrid.prototype.isotopeParams = {
-        itemSelector: this.isoItemSelector,
+        itemSelector: '.isotope-item',
         layoutMode: 'masonry',
         stamp: '.stamp'
     };
