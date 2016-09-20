@@ -19,6 +19,11 @@
     Isogrid.prototype.isoConteneur = '[data-isogrid-container]';
     Isogrid.prototype.isoLoadMoreBtn = '[data-isogrid-load-more]';
     Isogrid.prototype.isoItemSelector = '.isotope-item';
+    Isogrid.prototype.isotopeParams = {
+        itemSelector: this.isoItemSelector,
+        layoutMode: 'masonry',
+        stamp: '.stamp'
+    };
 
     Isogrid.prototype.paginationOffset = 0;
     Isogrid.prototype.paginationLimit = 10;
@@ -60,11 +65,7 @@
      */
     Isogrid.prototype.isotopeInit = function() {
         //console.log("ISOTOPE INIT ---------------------");
-        this.grid = $(this.isoConteneur).isotope({
-            itemSelector: this.isoItemSelector,
-            layoutMode: 'masonry',
-            stamp: '.stamp'
-        }).fadeTo(400, 1);
+        this.grid = $(this.isoConteneur).isotope(this.isotopeParams).fadeTo(400, 1);
     };
 
     Isogrid.prototype.relayout = function() {
@@ -74,8 +75,8 @@
     Isogrid.prototype.initImgLazyLoad = function () {
         this.grid.imagesLoaded().progress((instance, image) => {
             $(image.img).parents('[data-bg-loaded-container]').addClass('bg-loaded');
-        this.relayout();
-    });
+            this.relayout();
+        });
     };
 
     Isogrid.prototype.addItems = function (contentHtml = this.noresult[this._lang]) {
